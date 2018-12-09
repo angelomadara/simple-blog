@@ -16,7 +16,7 @@
 				</div>
 			</div>
 		</header>
-		<?php $e = (new Query())->select('posts')->orderBy('created_at','desc')->get(); ?>
+		<?php $e = (new Query())->select('posts')->whereNull('deleted_at','IS')->get(); ?>
 		<!-- Main Content -->
 		<div class="container">
 			<div class="row">

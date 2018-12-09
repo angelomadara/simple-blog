@@ -96,13 +96,28 @@ class Query extends DB
 		return $this;
 	}
 
-	public function and(){
-		$this->str .= " AND ";
+	public function andWhere($field,$operator,$e){
+		$this->str .= " AND `".$field."` ".$operator." '".$e."'";
 		return $this;
 	}
 
-	public function or(){
-		$this->str .= " AND ";
+	public function orWhere($field,$operator,$e){
+		$this->str .= " OR `".$field."` ".$operator." '".$e."'";
+		return $this;
+	}
+
+	public function whereNull($field,$operator){
+		$this->str .= " WHERE `{$field}` {$operator} NULL";
+		return $this;
+	}
+
+	public function andNull($field,$operator){
+		$this->str .= " AND `{$field}` {$operator} NULL";
+		return $this;
+	}
+
+	public function orNull($field,$operator){
+		$this->str .= " OR `{$field}` {$operator} NULL";
 		return $this;
 	}
 
